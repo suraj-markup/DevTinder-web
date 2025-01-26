@@ -1,12 +1,20 @@
-import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./Pages/Login";
+import Body from "./Pages/Body";
+import Profile from "./Pages/Profile";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-
-      <div className="text-red-600">dbdfbdfb</div>
-    </div>
+    <>
+      <Router basename="/">
+        <Routes>
+          <Route path="/" element={<Body />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 
