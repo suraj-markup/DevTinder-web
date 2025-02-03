@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import validator from "validator";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import {addUser,removeUser} from "../utils/userSlice"
 import { BASE_URL } from "../utils/constant";
+import { useSelector } from "react-redux"
+
 const Login = () => {
+
   const [emailError, setEmailError] = useState("");
   const [user, setUser] = useState({
     email: "shanti@gmail.com",
     password: "Qazwsxedc@123",
   });
+  
   const dispatch =useDispatch();
-
   const navigate=useNavigate();
+  
+  const isUser=useSelector((store)=>store.user);
+  // console.log(isUser);
+  if(isUser!==null){
+    return navigate('/');
+  }
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +49,7 @@ const Login = () => {
         },
         { withCredentials: true } 
       );
-      console.log(res.data);
+      // console.log(res.data);
       dispatch(addUser(res.data));
       return navigate('/');
       // return res;
@@ -48,6 +58,8 @@ const Login = () => {
     }
   };
 
+
+  
   return (
     <div className="h-screen bg-base-200 flex items-center justify-center">
       <div className="w-3/4 md:w-2/6 border-[3px] border-cyan-500 h-auto rounded-2xl p-5">
