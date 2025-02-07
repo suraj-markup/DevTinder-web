@@ -1,18 +1,8 @@
-
+import EditProfile from "../components/EditProfile";
 
 const Profile = () => {
   return (<>
-    <div>Profile</div>
-    <div>Profile</div>
-    <div>Profile</div>
-    <div>Profile</div>
-    <div>Profile</div>
-    <div>Profile</div>
-    <div>Profile</div>
-    <div>Profile</div>
-    <div>Profile</div>
-    <div>Profile</div>
-    <div>Profile</div>
+    <div><EditProfile/></div> 
   </>
   )
 }

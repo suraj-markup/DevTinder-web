@@ -3,8 +3,10 @@ import Login from "./Pages/Login";
 import Body from "./Pages/Body";
 import Profile from "./Pages/Profile";
 import Feed from "./Pages/Feed";
+import Signup from "./Pages/Signup";
 import store from "./utils/store";
 import { Provider } from "react-redux";
+import Connections from "./Pages/Conections";
 function App() {
   return (
     <>
@@ -16,6 +18,8 @@ function App() {
             <Route path="/" element={<Feed />}/>
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/connections" element={<Connections />} />
           </Route>
         </Routes>
       </Router>

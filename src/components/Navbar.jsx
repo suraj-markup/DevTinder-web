@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../utils/userSlice";
+import { removeFeed } from "../utils/feedSlice";
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
@@ -22,7 +23,7 @@ const Navbar = () => {
       );
       // console.log(res);
       dispatch(removeUser());
-
+      dispatch(removeFeed());
       return navigate("/login");
     } catch (err) {
       console.log(err);
@@ -50,8 +51,8 @@ const Navbar = () => {
                 <img
                   alt="Tailwind CSS Navbar component"
                   src={`${
-                    user.photo_url
-                      ? `${user.photo_url}`
+                    user.photoUrl
+                      ? `${user.photoUrl}`
                       : "https://www.shutterstock.com/image-vector/avatar-gender-neutral-silhouette-vector-600nw-2526512481.jpg"
                   }`}
                 />
@@ -68,7 +69,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a>Settings</a>
+              <Link to="/connections">Connections</Link>
             </li>
             <li>
               <a onClick={handleLogout}>Logout</a>

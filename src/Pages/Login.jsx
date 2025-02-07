@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import {addUser,removeUser} from "../utils/userSlice"
 import { BASE_URL } from "../utils/constant";
 import { useSelector } from "react-redux"
-
+import {Link} from "react-router-dom"
 const Login = () => {
 
   const [emailError, setEmailError] = useState("");
@@ -40,12 +40,12 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const emailID = user.email;
-      const pass = user.password;
+      const password = user.password;
       const res = await axios.post(
         BASE_URL+"/signin",
         {
           emailID,
-          pass,
+          password,
         },
         { withCredentials: true } 
       );
@@ -54,15 +54,16 @@ const Login = () => {
       return navigate('/');
       // return res;
     } catch (err) {
-      console.log(err);
+      console.log(err.response.data+" User does not exist");
+      alert(err.response.data + " User does not exist")
     }
   };
 
 
   
   return (
-    <div className="h-screen bg-base-200 flex items-center justify-center">
-      <div className="w-3/4 md:w-2/6 border-[3px] border-cyan-500 h-auto rounded-2xl p-5">
+    <div className="h-screen bg-base-200 flex  justify-center">
+      <div className="w-3/4 md:w-2/6 border-[3px] mt-10  border-cyan-500 h-3/4 rounded-2xl p-5">
         <h2 className="text-4xl text-center font-bold text-cyan-600 mb-5">
           LogIn
         </h2>
@@ -103,10 +104,11 @@ const Login = () => {
         </button>
         <p className="mb-10">
           Don&apos;t have an account?{" "}
-          <span className="underline text-blue-600">Register Here</span>
+          <Link to="/signup" className="underline text-blue-600">Register Here</Link>
         </p>
       </div>
     </div>
+
   );
 };
 

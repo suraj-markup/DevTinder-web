@@ -9,7 +9,6 @@ import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux"
 
-
 const Body = () => {
   const navigate = useNavigate();
   const dispatch=useDispatch();
