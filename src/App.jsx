@@ -7,6 +7,7 @@ import Signup from "./Pages/Signup";
 import store from "./utils/store";
 import { Provider } from "react-redux";
 import Connections from "./Pages/Conections";
+import Requests from "./Pages/Requests";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/connections" element={<Connections />} />
+            <Route path="/requests" element={<Requests />} />
           </Route>
         </Routes>
       </Router>

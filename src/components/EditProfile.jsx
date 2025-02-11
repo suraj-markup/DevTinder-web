@@ -16,13 +16,13 @@ const EditProfile = () => {
     const navigate = useNavigate();
 
     const [user, setUser] = useState({
-      firstName: "",
-      lastName: "",
-      age: "",
-      gender: "",
-      about: "",
-      skills: "",
-      photoUrl: "https://www.shutterstock.com/image-vector/avatar-gender-neutral-silhouette-vector-600nw-2526512481.jpg",
+      firstName: feedUser.firstName,
+      lastName: feedUser.lastName,
+      age: feedUser.age,
+      gender: feedUser.gender,
+      about: feedUser.about,
+      skills: feedUser.skills,
+      photoUrl: feedUser.photoUrl  ,
     });
 
     const handleChange = (e) => {

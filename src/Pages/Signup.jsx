@@ -24,14 +24,12 @@ const Signup = () => {
       skills: "",
     });
   
-    const dispatch =useDispatch();
+    // const dispatch =useDispatch();
     const navigate=useNavigate();
     
     const isUser=useSelector((store)=>store.user);
     // console.log(isUser);
-    if(isUser!==null){
-      return navigate('/');
-    }
+    
   
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -44,6 +42,12 @@ const Signup = () => {
         setEmailError("Valid Email :)");
       }
     };
+  
+    useEffect(() => {
+      if(isUser !== null) {
+        navigate('/');
+      }
+    }, [isUser, navigate]);
   
     const handleSignup = async () => {
       try {
@@ -74,15 +78,14 @@ const Signup = () => {
         );
 
         // console.log(res.data);
-        dispatch(addUser(res.data));
-        return navigate('/');
+        // dispatch(addUser(res.data));
+        navigate('/login');
 
       } catch (err) {
         console.log(err);   
-        alert(err.response.data + " User does not exist")
+        alert(err.response?.data || "Error during signup");
       }
     };
-  
   
     return (
       <div className="h-auto bg-base-200 flex justify-center">

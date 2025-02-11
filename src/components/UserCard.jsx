@@ -1,7 +1,7 @@
 import React from "react";
 
 const UserCard = ({user}) => {
-  console.log(user);
+  // console.log(user);
   return (
     <div className="card bg-base-300 w-96 shadow-xl">
       <figure>
@@ -14,10 +14,12 @@ const UserCard = ({user}) => {
       <div className="card-body">
         <h2 className="card-title font-bold text-2xl">{`${user?.firstName} ${user?.lastName} `} </h2>
         <p>{user?.about}</p>
+        
         <div className="flex justify-start gap-2">
         <p>{user?.age}</p>
         <p>{user?.gender}</p>
         </div>
+
         <div className="flex flex-wrap gap-2">
           {user?.skills ? (
             Array.isArray(user?.skills) 
