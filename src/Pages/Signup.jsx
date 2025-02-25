@@ -24,7 +24,7 @@ const Signup = () => {
       skills: "",
     });
   
-    // const dispatch =useDispatch();
+    const dispatch =useDispatch();
     const navigate=useNavigate();
     
     const isUser=useSelector((store)=>store.user);
@@ -55,11 +55,11 @@ const Signup = () => {
         const password = user.password;
         const firstName = user.firstName;
         const lastName = user.lastName;
-        const gender = user.gender;
-        const age = user.age;
-        const photoUrl = user.photoUrl;
-        const about = user.about;
-        const skills = Array.isArray(user.skills) ? user.skills : user.skills.split(",");   
+        // const gender = user.gender;
+        // const age = user.age;
+        // const photoUrl = user.photoUrl;
+        // const about = user.about;
+        // const skills = Array.isArray(user.skills) ? user.skills : user.skills.split(",");   
 
         const res = await axios.post(
           BASE_URL+"/signup",
@@ -68,18 +68,18 @@ const Signup = () => {
            password,
            firstName,
            lastName,
-           gender,
-           age,
-           photoUrl,
-           about,
-           skills
+          //  gender,
+          //  age,
+          //  photoUrl,
+          //  about,
+          //  skills
           },
           { withCredentials: true } 
         );
 
         // console.log(res.data);
-        // dispatch(addUser(res.data));
-        navigate('/login');
+        dispatch(addUser(res.data));
+        return navigate('/profile');
 
       } catch (err) {
         console.log(err);   
@@ -154,7 +154,7 @@ const Signup = () => {
               />
             </div>
             </div>
-            <div className="flex flex-row justify-start gap-5 ">
+            {/* <div className="flex flex-row justify-start gap-5 ">
   
             <div className="flex flex-col my-2 w-1/2">
               <label className="text-xl font-bold">
@@ -202,8 +202,8 @@ const Signup = () => {
                 className="border-2 border-cyan-400 rounded-lg mt-2 p-2 h-10"
 
               />
-            </div>
-            <div className="flex flex-col  my-2">
+            </div> */}
+            {/* <div className="flex flex-col  my-2">
               <label className="text-xl font-bold">
                 About <span className="text-red-700 text-xl">*</span>
               </label>
@@ -215,8 +215,8 @@ const Signup = () => {
                 onChange={handleChange}
                 className="border-2 border-cyan-400 rounded-lg   mt-2  p-2 h-20"
               />
-            </div>
-            <div className="flex flex-col">
+            </div> */}
+            {/* <div className="flex flex-col">
               <label className="text-xl font-bold">
                 Skills <span className="text-red-700 text-xl">*</span>
               </label>
@@ -230,7 +230,7 @@ const Signup = () => {
                   className="border-2 border-cyan-400 rounded-lg p-2 h-10"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
           </div>
           <button
